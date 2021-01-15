@@ -1,0 +1,23 @@
+class Matrix:
+    def __init__(self, matrix):
+        self.matrix = matrix
+
+    def __str__(self):
+        return '\n'.join([''.join(['%d\t' % i for i in row]) for
+                          row in self.matrix])
+
+    def __add__(self, other):
+        v = []
+        for n in range (0, len(self.matrix)):
+               w = []
+               for k in range (0, len(self.matrix[n])):
+                   w.append(self.matrix[n][k] + other.matrix[n][k])
+               v.append(w)
+        return Matrix(v)
+
+
+m = Matrix([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
+m_1 = Matrix([[1, 5, 0], [4, 0, 1], [7, 0, 3], [8, 0, 0]])
+print(m + m_1)
+print(m)
+print(m_1)

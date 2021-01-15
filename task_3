@@ -1,0 +1,42 @@
+class Cell:
+    def __init__(self, p):
+        self.p = p
+
+    def __add__(self, other):
+        return Cell(self.p + other.p)
+
+    def __sub__(self, other):
+        return Cell(max(self.p - other.p, 0))
+
+
+
+    def __mul__(self, other):
+        return Cell(self.p * other.p)
+
+    def __truediv__(self, other):
+        return Cell(self.p // other.p)
+
+
+
+
+
+    def make_order(self, p, k):
+            v = []
+            for n in range (0, k):
+                v.append('*')
+            z = []
+            for n in range (0, p - k * (p//k)):
+                z.append('*')
+            w = []
+            for n in range (0, p // k):
+                w.append(v)
+            w.append(z)
+
+            return '\n'.join([''.join([a for a in row]) for row in w])
+c = Cell(12)
+c_1 = Cell(1)
+print((c_1 + c).p)
+print((c_1 * c).p)
+print((c_1 / c).p)
+print((c_1 - c).p)
+print(c.make_order(45, 10))
