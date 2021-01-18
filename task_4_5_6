@@ -1,0 +1,98 @@
+class Warehouse:
+    pass
+
+
+class Office_equipment(Warehouse):
+    def __init__(self, a):
+        self.a = a  #создание списка
+
+    def __str__(self):
+        return f'Сейчас в складе имеется, Принтеров --> {self.a[0]}, Сканеров --> {self.a[1]}, Ксероксов --> {self.a[2]}'
+
+
+class Printer(Office_equipment):
+    def __init__(self, a):
+        super().__init__(a)
+
+    def arrival_p(self):
+            j = input('Введите число поступивших принтеров: ')
+            if not j.isdigit():
+                print('Число должно быть натуральным!!!')
+            else:
+                self.a[0] += int(j)
+
+    def delivery_p(self):
+        j = input('Введите число вывозимых принтеров: ')
+        if not j.isdigit():
+            print('Количество должно быть натуральным')
+        elif self.a[0] >= int(j):
+            self.a[0] = self.a[0] - int(j)
+        else:
+            print('На складе не достаточно принтеров!!!')
+
+    def g(self):
+        return f'Сейчас в складе имеется --> {self.a[0]} принтеров'
+
+
+class Scanner(Office_equipment):
+    def __init__(self, a):
+        super().__init__(a)
+
+    def arrival_s(self):
+            j = input('Введите число поступивших сканеров: ')
+            if not j.isdigit():
+                print('Число должно быть натуральным!!!')
+            else:
+                self.a[1] += int(j)
+
+    def delivery_s(self):
+        j = input('Введите число вывозимых сканеров: ')
+        if not j.isdigit():
+            print('Количество должно быть натуральным')
+        elif self.a[1] >= int(j):
+            self.a[1] = self.a[1] - int(j)
+        else:
+            print('На складе не достаточно сканеров!!!')
+
+    def s(self):
+        return f'Сейчас в складе имеется --> {self.a[1]} сканеров'
+
+
+class Xerox(Office_equipment):
+    def __init__(self, a):
+        super().__init__(a)
+
+    def arrival_x(self):
+            j = input('Введите число поступивших ксероксов: ')
+            if not j.isdigit():
+                print('Число должно быть натуральным!!!')
+            else:
+                self.a[2] += int(j)
+
+    def delivery_x(self):
+        j = input('Введите число вывозимых ксероксов: ')
+        if not j.isdigit():
+            print('Количество должно быть натуральным')
+        elif self.a[2] >= int(j):
+            self.a[2] = self.a[2] - int(j)
+        else:
+            print('На складе не достаточно ксероксов!!!')
+
+    def h(self):
+        return f'Сейчас в складе имеется --> {self.a[2]} ксероксов'
+
+c = Office_equipment([0, 0, 0])
+print(c)
+p = Printer(c.a)
+p.arrival_p()
+p.delivery_p()
+print(p.g())
+s = Scanner(c.a)
+s.arrival_s()
+s.delivery_s()
+print(s.s())
+x = Xerox(c.a)
+x.arrival_x()
+x.delivery_x()
+print(x.h())
+print(c)

@@ -1,0 +1,19 @@
+class Zero(Exception):
+    def __init__(self, txt):
+        self.txt = txt
+
+inp_date = input('Введите число, отличное от нуля: ')
+
+try:
+    inp_date = int(inp_date)
+    if inp_date == 0:
+        raise Zero('Вы ввели 0!!!')
+    else:
+        b = 1 / int(inp_date)
+except ValueError:
+    print('Вы ввели не число!!!')
+except Zero as err:
+    print(err)
+else:
+    print(f'Все хорошо {b:.2f}')
+c = Zero(2)

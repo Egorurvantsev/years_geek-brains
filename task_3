@@ -1,0 +1,22 @@
+class Is_num(Exception):
+    def __init__(self, txt):
+        self.txt = txt
+
+a = []
+p = input('Введите число:')
+while p != 'Stop':
+    try:
+        if p.startswith('-'):
+            b = p[1:]
+        else:
+            b = p
+        b = b.split('.')
+        if len(b) > 2 or not b[0].isdigit() or ((len(b) == 2) and not b[1].isdigit()):
+            raise Is_num('Вы ввели не число')
+    except Is_num as err:
+        print(err)
+    else:
+        a.append(float(p))
+    p = input('Введите число или нажмите Stop, если хотите завершить:')
+
+print(a)

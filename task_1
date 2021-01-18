@@ -1,0 +1,29 @@
+class Date:
+    def __init__(self, date_1):
+        self.date_1 = date_1
+
+    @classmethod
+    def d(cls):
+        b = date_1.split('-')
+        try:
+            return f'{int(b[0])}.{int(b[1])}.{int(b[2])}'
+        except ValueError:
+            return f'Введено не число!!!'
+
+    @staticmethod
+    def f():
+        b = date_1.split('-')
+        try:
+            if int(b[0]) >= 1 and int(b[0]) <= 31 and int(b[1]) >= 1 and int(b[1]) <= 12 and int(b[2]) >= 1 and int(b[2]) <= 9999:
+                return f'{int(b[0])}.{int(b[1])}.{int(b[2])}'
+            else:
+                return 'Ошибка в дате!!!'
+        except ValueError:
+            return 'Введено не число!!!'
+
+
+date_1 = input('Введите дату:')
+c = Date(date_1)
+print(c.d())
+print()
+print(c.f())
